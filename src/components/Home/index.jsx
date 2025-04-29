@@ -1,15 +1,38 @@
-import React, {useState} from 'react'
-import { Navigate } from 'react-router-dom'
+import React from 'react'
+import {NavLink, Outlet} from "react-router-dom"
+import '../../styles/nav.css'
 
 export default function Home() {
-  const [sum, setSum] = useState(1)
   return (
     <div>
-      <h1>这是一个Home</h1>
-      {sum === 2 ? <Navigate to="/about" /> : <h2>当前sum值为{sum}</h2>}
-      
-      <button onClick={()=>setSum(2)}>改变状态为2并跳转至About</button>
-
+      <h3 className="mb-4">Home 组件</h3>
+      <div>
+        <ul className="nav nav-tabs mb-3">
+          <li className="nav-item">
+            <NavLink 
+              className={({isActive}) => 
+                isActive ? "nav-link active" : "nav-link"
+              }
+              to="news"
+            >
+              News
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink 
+              className={({isActive}) => 
+                isActive ? "nav-link active" : "nav-link"
+              }
+              to="message"
+            >
+              Message
+            </NavLink>
+          </li>
+        </ul>
+        <div className="mt-3">
+          <Outlet />
+        </div>
+      </div>
     </div>
   )
 }

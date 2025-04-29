@@ -29,6 +29,7 @@ export default function App() {
             >
               Home
             </NavLink>
+			
           </div>
         </div>
         <div className="col-md-9">
